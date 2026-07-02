@@ -79,7 +79,12 @@
               Request my consult
             </button>
             <div id="formSuccess" class="hidden rounded-2xl bg-blue/8 border border-blue/20 p-4 text-navy">
-              Thank you. We will call within one business day to schedule your free consult.
+              <p class="font-medium">Thank you. We will call within one business day to schedule your free consult.</p>
+              <p class="mt-2 text-[15px] text-stone">Prefer to lock in a time right now?</p>
+              <a id="calBtn" href="https://cal.com/berriswillsandtrusts.com/free-consultation" target="_blank" rel="noopener noreferrer"
+                class="mt-3 inline-flex items-center rounded-full bg-blue px-5 py-2.5 text-[15px] font-medium text-white transition-colors hover:bg-navy">
+                Pick your time &nbsp;&rarr;
+              </a>
             </div>
           </div>
         </form>
@@ -139,17 +144,40 @@
     (function () {
       var form = document.getElementById('consultForm');
       if (!form) return;
+      var ENDPOINT = 'https://agency-portal-eta.vercel.app/api/leads/capture';
+      var CAL = 'https://cal.com/berriswillsandtrusts.com/free-consultation';
       form.addEventListener('submit', function (ev) {
         ev.preventDefault();
-        var name = document.getElementById('name').value.trim();
-        var email = document.getElementById('email').value.trim();
+        var nameV = document.getElementById('name').value.trim();
+        var emailV = document.getElementById('email').value.trim();
+        var phoneV = document.getElementById('phone').value.trim();
         var err = document.getElementById('formError');
         var ok = document.getElementById('formSuccess');
-        var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!name || !validEmail) { err.classList.remove('hidden'); ok.classList.add('hidden'); return; }
+        var btn = document.getElementById('submitBtn');
+        var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailV);
+        if (!nameV || !validEmail) {
+          err.textContent = 'Please enter your name and a valid email.';
+          err.classList.remove('hidden'); ok.classList.add('hidden'); return;
+        }
         err.classList.add('hidden');
-        ok.classList.remove('hidden');
-        form.querySelectorAll('input').forEach(function (i) { i.value = ''; });
+        var label = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
+        fetch(ENDPOINT, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ client_id: 6, name: nameV, email: emailV, phone: phoneV, source: 'website-contact-form' })
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (!res || res.error) throw new Error((res && res.error) || 'failed');
+          var cal = document.getElementById('calBtn');
+          if (cal) cal.href = CAL + '?name=' + encodeURIComponent(nameV) + '&email=' + encodeURIComponent(emailV);
+          ok.classList.remove('hidden');
+          form.querySelectorAll('input').forEach(function (i) { i.value = ''; });
+        })
+        .catch(function () {
+          err.textContent = 'Sorry, something went wrong. Please call (248) 712-3139 and we will get you scheduled.';
+          err.classList.remove('hidden');
+        })
+        .finally(function () { btn.disabled = false; btn.textContent = label; });
       });
     })();
   </script>
