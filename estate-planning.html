@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>.est-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}@media(min-width:768px){.est-grid{grid-template-columns:repeat(3,1fr)}}</style>
 </head>
 
 <body class="bg-base text-ink font-sans text-[17px] leading-relaxed antialiased">
@@ -60,7 +61,7 @@
       <p class="mt-7 text-xl text-stone leading-relaxed" style="max-width:60ch">Protecting your legacy starts with smart planning today. From wills and trusts to powers of attorney, guardianship, and deeds, we help you document your wishes clearly and keep control of your future. Explore each part of an estate plan below.</p>
     </section>
     <section class="mx-auto max-w-content px-6 pb-24">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+      <div class="est-grid">
         <a href="wills.html" class="reveal" style="display:block;background:#fff;border:1px solid rgba(20,48,90,.1);border-radius:16px;padding:1.75rem;text-decoration:none">
           <h3 class="font-serif text-navy" style="font-size:1.4rem">Wills</h3>
           <p class="mt-3 text-stone text-[15px] leading-relaxed">State who receives your property, name a personal representative, and name a guardian for minor children.</p>
