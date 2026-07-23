@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/how-it-works.html?raw';
+---
+<Layout title={"How It Works | Berris Law Firm"} description={"Wills, trusts, and estate planning for Michigan families. Flat fees and a free 10-minute consultation."} active={"how"}>
+  <Fragment set:html={body} />
+</Layout>

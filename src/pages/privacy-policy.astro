@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/privacy-policy.html?raw';
+---
+<Layout title={"Privacy Policy | Berris Law Firm"} description={"Privacy Policy for Berris Law Firm, PLLC."} active={""}>
+  <Fragment set:html={body} />
+</Layout>

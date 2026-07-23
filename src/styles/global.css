@@ -1,0 +1,63 @@
+/* Custom component CSS, ported verbatim from the old styles.css.
+   Tailwind base/utilities are injected by @astrojs/tailwind. */
+
+/* Motion: subtle reveal only, gated on reduced-motion. */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* Service-topic grids (hubs): 1 col mobile, 3 cols desktop. */
+.svc-grid, .est-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .svc-grid, .est-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Practice detail, insights, videos components. */
+.tag { display:inline-flex; align-items:center; border-radius:9999px;
+  background:rgba(47,111,176,.10); color:#2F6FB0; font-size:12px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; padding:.35rem .7rem; }
+.svc-list { margin-top:1rem; }
+.svc-list li { position:relative; padding-left:1.4rem; margin-top:.7rem;
+  color:#5B6675; font-size:15.5px; line-height:1.5; }
+.svc-list li::before { content:''; position:absolute; left:0; top:.55em;
+  width:7px; height:7px; border-radius:9999px; background:#2F6FB0; }
+.card-media { position:relative; aspect-ratio:16/9; border-radius:1rem;
+  overflow:hidden; background:#14305A; display:block; }
+.card-media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.card-media .veil { position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(14,34,68,.85), rgba(14,34,68,.25)); }
+.play { position:absolute; inset:0; display:grid; place-items:center; }
+.play span { width:64px; height:64px; border-radius:9999px;
+  background:rgba(255,255,255,.14); border:1.5px solid rgba(255,255,255,.75);
+  display:grid; place-items:center; transition:background .2s ease, transform .2s ease; }
+.card-media:hover .play span { background:rgba(255,255,255,.28); transform:scale(1.06); }
+.play svg { width:22px; height:22px; margin-left:3px; fill:#fff; }
+.vid-label { position:absolute; left:14px; top:14px; font-size:12px; font-weight:500;
+  letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.9); }
+.vid-dur { position:absolute; right:12px; bottom:12px; font-size:12px; font-weight:500;
+  color:#fff; background:rgba(14,34,68,.7); border-radius:9999px; padding:.2rem .55rem; }
+.card-lift { transition:transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+.card-lift:hover { transform:translateY(-3px); box-shadow:0 24px 50px -30px rgba(14,34,68,.35); }
+
+/* Social icons (header, small). */
+.soc { display:inline-grid; place-items:center; width:24px; height:24px; border-radius:9999px;
+  background:#14305A; color:#fff; transition:background .2s ease, transform .2s ease; }
+.soc:hover { background:#2F6FB0; transform:translateY(-2px); }
+.soc svg { width:12px; height:12px; fill:currentColor; }
+
+/* Mobile nav + accessibility. */
+.skip-link { position:absolute; left:-9999px; top:0; z-index:200; background:#14305A; color:#fff; padding:10px 16px; border-radius:0 0 8px 0; font-size:15px; }
+.skip-link:focus { left:0; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, .soc:focus-visible { outline:3px solid #2F6FB0; outline-offset:2px; }
+.hamburger { display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:10px; color:#14305A; background:#fff; border:1px solid rgba(27,36,48,.15); cursor:pointer; }
+.hamburger svg { width:26px; height:26px; }
+.mobile-menu { display:none; border-top:1px solid rgba(27,36,48,.1); background:#fff; }
+.mobile-menu.open { display:block; }
+.mobile-menu a { display:block; padding:15px 24px; font-size:17px; color:#5B6675; border-bottom:1px solid rgba(27,36,48,.06); text-decoration:none; }
+.mobile-menu a:hover, .mobile-menu a[aria-current="page"] { color:#14305A; background:#F5F7FB; }
+.mobile-menu .mm-cta { margin:14px 24px 8px; text-align:center; background:#2F6FB0; color:#fff; border-radius:9999px; padding:14px; font-weight:600; border-bottom:none; }
+.mobile-menu .mm-cta:hover { background:#14305A; color:#fff; }
+.mobile-menu .mm-social { display:flex; justify-content:center; gap:.6rem; padding:8px 24px 22px; border-bottom:none; }
+@media (min-width:1024px){ .hamburger{ display:none; } .mobile-menu, .mobile-menu.open{ display:none; } }
+@media (max-width:1023px){ .nav-actions-desktop{ display:none !important; } }

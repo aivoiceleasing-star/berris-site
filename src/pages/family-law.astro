@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/family-law.html?raw';
+---
+<Layout title={"Family Law | Berris Law Firm"} description={"Michigan family law: divorce, custody, support, property division, mediation, and more."} active={"practice"}>
+  <Fragment set:html={body} />
+</Layout>

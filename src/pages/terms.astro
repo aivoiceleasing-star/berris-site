@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/terms.html?raw';
+---
+<Layout title={"Terms & Conditions | Berris Law Firm"} description={"Terms and Conditions for Berris Law Firm, PLLC."} active={""}>
+  <Fragment set:html={body} />
+</Layout>

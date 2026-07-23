@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/child-support.html?raw';
+---
+<Layout title={"Child Support | Family Law | Berris Law Firm"} description={"Michigan child support, established and calculated under state guidelines."} active={"practice"}>
+  <Fragment set:html={body} />
+</Layout>

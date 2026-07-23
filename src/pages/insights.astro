@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/insights.html?raw';
+---
+<Layout title={"Insights | Berris Law Firm"} description={"Wills, trusts, and estate planning for Michigan families. Flat fees and a free 10-minute consultation."} active={"insights"}>
+  <Fragment set:html={body} />
+</Layout>

@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/wills.html?raw';
+---
+<Layout title={"Wills | Estate Planning | Berris Law Firm"} description={"Michigan wills that name who inherits, a personal representative, and a guardian for minor children."} active={"practice"}>
+  <Fragment set:html={body} />
+</Layout>

@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/about.html?raw';
+---
+<Layout title={"About Ari Berris | Berris Law Firm"} description={"Ari Berris has practiced law for more than two decades across estate planning, business, and family law. The depth of a large firm, delivered personally, with a deliberately small practice."} active={"about"}>
+  <Fragment set:html={body} />
+</Layout>

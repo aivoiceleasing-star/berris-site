@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/business-law.html?raw';
+---
+<Layout title={"Business Law | Berris Law Firm"} description={"Michigan business law: formation, contracts, and transactions to form, grow, and protect your company."} active={"practice"}>
+  <Fragment set:html={body} />
+</Layout>

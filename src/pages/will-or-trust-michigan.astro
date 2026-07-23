@@ -1,0 +1,8 @@
+---
+import Layout from '../layouts/Layout.astro';
+import body from '../partials/will-or-trust-michigan.html?raw';
+import head from '../partials/will-or-trust-michigan.head.html?raw';
+---
+<Layout title={"Do You Need a Trust, or Is a Will Enough in Michigan? | Berris Law Firm"} description={"A plain-English test for Michigan families deciding between a will and a revocable living trust, and how each one handles probate, your home, and your kids."} active={"insights"} headExtra={head}>
+  <Fragment set:html={body} />
+</Layout>
